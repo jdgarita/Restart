@@ -67,7 +67,7 @@
 				69FD9FF42A7A0D96007F56F8 /* Views */,
 				69FD9FF22A7A0C63007F56F8 /* Sounds */,
 				6938028B2A7A0786003E683A /* RestartApp.swift */,
-				69FD9FF32A7A0D86007F56F8 /*  Screens */,
+				69FD9FF32A7A0D86007F56F8 /* Screens */,
 				6938028F2A7A0787003E683A /* Assets.xcassets */,
 				693802912A7A0787003E683A /* Preview Content */,
 			);
@@ -91,14 +91,14 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
-		69FD9FF32A7A0D86007F56F8 /*  Screens */ = {
+		69FD9FF32A7A0D86007F56F8 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				6938028D2A7A0786003E683A /* ContentView.swift */,
 				69FD9FF72A7A0F6C007F56F8 /* OnboardingView.swift */,
 				69FD9FF92A7A0F79007F56F8 /* HomeView.swift */,
 			);
-			path = " Screens";
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		69FD9FF42A7A0D96007F56F8 /* Views */ = {
