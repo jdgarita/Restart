@@ -12,7 +12,7 @@ struct OnboardingView: View {
     
     @State private var buttonWidth: Double = UIScreen.main.bounds.width - 80
     @State private var buttonOffset: CGFloat = 0
-    
+    @State private var isAnimating: Bool = false
     
     var body: some View {
         ZStack {
@@ -38,6 +38,9 @@ struct OnboardingView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 10)
                 }
+                .opacity(isAnimating ? 1 : 0)
+                .offset(y: isAnimating ? 0 : -40)
+                .animation(.easeOut(duration: 1), value: isAnimating)
                 
                 ZStack{
                     CircleGroupView(ShapeColor: .white, ShapeOpacity: 0.2)
@@ -82,32 +85,35 @@ struct OnboardingView: View {
                                 .font(.system(size: 24, weight: .bold))
                         }
                         .foregroundColor(.white)
-                    .frame(width: 80, height: 80, alignment: .center)
-                    .offset(x: buttonOffset)
-                    .gesture(
-                        DragGesture()
-                            .onChanged{ gesture in
-                                if gesture.translation.width > 0 && buttonOffset <= buttonWidth - 80 {
-                                    buttonOffset = gesture.translation.width
+                        .frame(width: 80, height: 80, alignment: .center)
+                        .offset(x: buttonOffset)
+                        .gesture(
+                            DragGesture()
+                                .onChanged{ gesture in
+                                    if gesture.translation.width > 0 && buttonOffset <= buttonWidth - 80 {
+                                        buttonOffset = gesture.translation.width
+                                    }
                                 }
-                            }
-                            .onEnded { _ in
-                                if buttonOffset > buttonWidth / 2 {
-                                    buttonOffset = buttonWidth - 80
-                                    isOnboardingViewActive = false
-                                } else {
-                                    buttonOffset = 0
+                                .onEnded { _ in
+                                    if buttonOffset > buttonWidth / 2 {
+                                        buttonOffset = buttonWidth - 80
+                                        isOnboardingViewActive = false
+                                    } else {
+                                        buttonOffset = 0
+                                    }
                                 }
-                            }
-                    )
-                    
-                    Spacer()
+                        )
+                        
+                        Spacer()
                     }
                 }
                 .frame(width: buttonWidth, height: 80, alignment: .center)
                 .padding()
             }
         }
+        .onAppear(perform: {
+            isAnimating = true
+        })
     }
 }
 

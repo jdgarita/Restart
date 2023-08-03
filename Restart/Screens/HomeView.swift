@@ -20,7 +20,7 @@ struct HomeView: View {
                 Image("character-2")
                     .resizable()
                     .scaledToFit()
-                .padding()
+                    .padding()
             }
             
             Text("The time that leads to mastery is dependent on the intensity of our focus.")
